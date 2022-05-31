@@ -1,4 +1,4 @@
-package project1;
+package project_1;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -15,7 +15,7 @@ import java.util.Map;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class Mainapp {
+public class MainApp {
 
 	public static void main(String[] args) throws IOException {
 		AdminMenu a=new AdminMenu();
@@ -33,7 +33,7 @@ public class Mainapp {
 class Menu extends AbstractMenu{
 	Menu(){
 		
-		System.out.println("¸Þ´º");
+		System.out.println("ë©”ë‰´");
 	}
 	
 }
@@ -114,7 +114,7 @@ abstract class AbstractMenu extends Thread{
 		System.out.println();
 	}
 	
-	//movie list setter fix ÇÊ¿ä
+	//movie list setter fix í•„ìš”
 	public void MovieListSet() throws IOException{
 		//save Movie Name
 		System.out.println("Enter MovieName");
@@ -141,15 +141,23 @@ abstract class AbstractMenu extends Thread{
 		//writer Movie List
 		FileWriter fw=new FileWriter(path+"\\data.txt",true);
 		BufferedWriter bw=new BufferedWriter(fw); 
-			
-		FileReader fr=new FileReader(path+"\\data.txt");
-		BufferedReader br= new BufferedReader(fr);
-
-		while(br.readLine()!=null) {
-			count++;
+		int s=0;
+		for(int i=0; i<MovieAl.size();i++) {
+			if(i!=(MovieAl.get(i).count)) {
+				s=i+1;
+				count=s;
+				break;
+			}
 		}
-		br.close();
-		fr.close();
+		
+//		FileReader fr=new FileReader(path+"\\data.txt");
+//		BufferedReader br= new BufferedReader(fr);
+//
+//		while(br.readLine()!=null) {
+//			count++;
+//		}
+//		br.close();
+//		fr.close();
 		
 		Movie m=new Movie(count,MovieName,MovieGerne);
 		MovieAl.add(m);
@@ -205,7 +213,8 @@ abstract class AbstractMenu extends Thread{
 		while((d=br.readLine())!=null) {
 			TemporData.add(d);
 		}
-		//ÀÌ·¸°Ô Áö¿ì¸é ·©Å© °ãÄ§ for¹®À¸·Î °ãÄ£°Å ¾ø´Â¼ýÀÚ¸¦ ÀÔ·ÂÇØ¼­ ³Ö¾î¾ßÇÔ
+		//ì´ë ‡ê²Œ ì§€ìš°ë©´ ëž­í¬ ê²¹ì¹¨ forë¬¸ìœ¼ë¡œ ê²¹ì¹œê±° ì—†ëŠ”ìˆ«ìžë¥¼ ìž…ë ¥í•´ì„œ ë„£ì–´ì•¼í•¨
+		
 		TemporData.remove(x-1);
 		br.close();
 		fr.close();
@@ -352,7 +361,7 @@ class Movie{
 	
 	}
 	void getname(){
-		System.out.println(count+"¹ø\s"+"Á¦¸ñ:"+MovieName+"\s Àå¸£:"+MovieGenre);
+		System.out.println(count+"ë²ˆ\s"+"ì œëª©:"+MovieName+"\s ìž¥ë¥´:"+MovieGenre);
 	}
 	int getMovieNumber() {
 		return count;
